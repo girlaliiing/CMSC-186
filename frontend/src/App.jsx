@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import axios from 'axios';
-import './App.css'
+import './App.css';
+import JobDetail from './JobDetail';
 
-function App() {
+function JobList() {
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('intern');
 
@@ -29,8 +29,6 @@ function App() {
   return (
     <div className="p-4 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Job & Internship Listings</h1>
-
-      {/* Search Form */}
       <form onSubmit={handleSearch} className="mb-6 flex gap-2">
         <input
           type="text"
@@ -44,7 +42,6 @@ function App() {
         </button>
       </form>
 
-      {/* Job Listings */}
       {jobs.length === 0 ? (
         <p>No results found.</p>
       ) : (
@@ -53,14 +50,13 @@ function App() {
             <h2 className="text-xl font-semibold">{job.job_title}</h2>
             <p className="text-sm text-gray-600">{job.employer_name} – {job.job_city}</p>
             <p className="mt-2 text-gray-800">{job.job_description?.slice(0, 150)}...</p>
-            <a
+            <Link
+              to={`/job/${index}`}
+              state={{ job }}
               className="text-blue-600 underline mt-2 inline-block"
-              href={job.job_apply_link}
-              target="_blank"
-              rel="noreferrer"
             >
-              Apply Now
-            </a>
+              View Details
+            </Link>
           </div>
         ))
       )}
@@ -68,4 +64,15 @@ function App() {
   );
 }
 
-export default App
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<JobList />} />
+        <Route path="/job/:id" element={<JobDetail />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
