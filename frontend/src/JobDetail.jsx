@@ -9,7 +9,6 @@ function JobDetail() {
     return <p className="text-left p-6">Job details not available.</p>;
   }
 
-  // Extracts a section and returns both the extracted items and the remaining text
   function extractSection(description, sectionKeywords) {
     if (!description) return { items: [], remaining: description };
 
@@ -37,7 +36,6 @@ function JobDetail() {
     };
   }
 
-  // Step-by-step extraction and text removal
   const {
     items: extractedQualifications,
     remaining: descWithoutQualifications,
@@ -70,7 +68,6 @@ function JobDetail() {
     'what you’ll get',
   ]);
 
-  // Use job highlights first, fallback to extracted data
   const qualifications =
     job.job_highlights?.Qualifications?.length > 0
       ? job.job_highlights.Qualifications
@@ -87,18 +84,16 @@ function JobDetail() {
       : extractedBenefits;
 
   return (
-    <div className="p-6 max-w-3xl mx-auto text-left space-y-6">
-      {/* Back Button */}
+    <div className="job-detail-container max-w-3xl mx-auto text-left">
       <div>
         <button
           onClick={() => navigate(-1)}
-          className="text-blue-600 underline"
+          className="back-button"
         >
           ← Back
         </button>
       </div>
 
-      {/* Job Title and Employer */}
       <div className="job-header">
         <h1 className="text-2xl font-bold">{job.job_title}</h1>
         <p className="text-gray-600">
@@ -106,55 +101,52 @@ function JobDetail() {
         </p>
       </div>
 
-      {/* Job Description */}
-      <div>
+      <div className="job-section">
         <h2 className="text-lg font-semibold">Job Description</h2>
         <p className="mt-2 whitespace-pre-line">{cleanedDescription}</p>
       </div>
 
-      {/* Job Highlights */}
       {(qualifications.length > 0 ||
         responsibilities.length > 0 ||
         benefits.length > 0) && (
-        <div>
-          <h2 className="text-lg font-semibold">Job Highlights</h2>
-          <div className="space-y-2 mt-2">
-            {qualifications.length > 0 && (
-              <div>
-                <strong>Qualifications:</strong>
-                <ul className="list-disc ml-5 mt-1">
-                  {qualifications.map((q, index) => (
-                    <li key={index}>{q}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {responsibilities.length > 0 && (
-              <div>
-                <strong>Responsibilities:</strong>
-                <ul className="list-disc ml-5 mt-1">
-                  {responsibilities.map((r, index) => (
-                    <li key={index}>{r}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {benefits.length > 0 && (
-              <div>
-                <strong>Benefits:</strong>
-                <ul className="list-disc ml-5 mt-1">
-                  {benefits.map((b, index) => (
-                    <li key={index}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          <div className="job-section">
+            <h2 className="text-lg font-semibold">Job Highlights</h2>
+            <div className="space-y-2 mt-2">
+              {qualifications.length > 0 && (
+                <div>
+                  <strong>Qualifications:</strong>
+                  <ul className="list-disc ml-5 mt-1">
+                    {qualifications.map((q, index) => (
+                      <li key={index}>{q}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {responsibilities.length > 0 && (
+                <div>
+                  <strong>Responsibilities:</strong>
+                  <ul className="list-disc ml-5 mt-1">
+                    {responsibilities.map((r, index) => (
+                      <li key={index}>{r}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {benefits.length > 0 && (
+                <div>
+                  <strong>Benefits:</strong>
+                  <ul className="list-disc ml-5 mt-1">
+                    {benefits.map((b, index) => (
+                      <li key={index}>{b}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
       )}
 
-      {/* Additional Job Info */}
-      <div>
+      <div className="job-section">
         <h2 className="text-lg font-semibold">Additional Information</h2>
         <div className="space-y-1 mt-2">
           <p><strong>Country:</strong> {job.job_country}</p>
@@ -181,17 +173,14 @@ function JobDetail() {
         </div>
       </div>
 
-      {/* Apply Button */}
-      <div className="text-center">
-        <a
-          href={job.job_apply_link}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-block bg-green-600 text-white px-4 py-2 rounded"
-        >
-          Apply Now
-        </a>
-      </div>
+      <a
+        href={job.job_apply_link}
+        target="_blank"
+        rel="noreferrer"
+        className="apply-button"
+      >
+        Apply Now
+      </a>
     </div>
   );
 }

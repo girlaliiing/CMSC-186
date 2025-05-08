@@ -1,0 +1,265 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fb;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Layout Structure */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  min-height: 70%;
+  margin: auto;
+  width: 100%;
+}
+
+.intro-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-section h1 {
+  font-size: 50px;
+  color: #7393B3;
+  margin-bottom: 0.5rem;
+  margin-top: 105px;
+}
+
+.intro-section p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.search-form input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-form button {
+  background-color: #7393B3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.results-section {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Cards */
+.card {
+  background-color: white;
+  border: 1px solid #dce3ea;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.job-title {
+  color: #2b3e50;
+}
+
+/* Navbar & Footer */
+.navbar {
+  background-color: #7393B3;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #7393B3;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: -15px;
+}
+
+.job-detail-container {
+  background-color: white;
+  border: 1px solid #dce3ea;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.job-header h1 {
+  color: #2b3e50;
+  margin-bottom: 0.5rem;
+}
+
+.job-header p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.job-section {
+  margin-top: 1.5rem;
+}
+
+.job-section h2 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.25rem;
+}
+
+.job-section ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  color: #444;
+}
+
+.additional-info p {
+  margin: 0.3rem 0;
+}
+
+.apply-button {
+  background-color: #3cb371;
+  color: white;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 2rem;
+  transition: background-color 0.2s;
+}
+
+.apply-button:hover {
+  background-color: #2e8b57;
+}
+
+.view-details-button {
+  background-color: #7393B3;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.view-details-button:hover {
+  background-color: #5a7897;
+  transform: translateY(-2px);
+}
+
+.back-button {
+  background-color: transparent;
+  color: #7393B3;
+  border: 2px solid #7393B3;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.back-button:hover {
+  background-color: #7393B3;
+  color: white;
+}
+
+.search-form-enhanced {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #7393B3;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(115, 147, 179, 0.2);
+}
+
+.search-button {
+  background-color: #7393B3;
+  color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #5a7897;
+}
