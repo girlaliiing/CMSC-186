@@ -1,18 +1,10 @@
 const express = require('express');
 const axios = require('axios');
-const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'jobapi'
-});
 
 app.get('/api/jobs', async (req, res) => {
   const query = req.query.q || 'intern'; // Default to "intern"
